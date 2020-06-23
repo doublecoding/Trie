@@ -5,7 +5,7 @@ namespace TrieStruct
     public class Node<T>
     {
         public T Data { get; set; }
-        public string Word { get; set; } 
+        public string MainPrefix { get; set; } 
         public bool IsWord { get; set; }
         public Dictionary<char, Node<T>> Children { get; set; }
 
@@ -13,7 +13,7 @@ namespace TrieStruct
         public Node(T data, bool isWord)
         {
             Data = data;
-            Word = "";
+            MainPrefix = "";
             IsWord = isWord;
             Children = new Dictionary<char, Node<T>>();
         }
