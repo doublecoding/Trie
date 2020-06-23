@@ -21,7 +21,7 @@ namespace TrieStruct
                     {
                         currentNode.AddChild(word[i], true, data);
                         currentNode = currentNode.GetChild(word[i]);
-                        currentNode.Word = word;
+                        currentNode.MainPrefix = word;
                     }
                 }
                 else if (i == word.Length - 1)
@@ -29,7 +29,7 @@ namespace TrieStruct
                     currentNode = currentNode.GetChild(word[i]);
                     currentNode.Data = data;
                     currentNode.IsWord = true;
-                    currentNode.Word = word;
+                    currentNode.MainPrefix = word;
                     break;
                 }
                 currentNode = currentNode.GetChild(word[i]);
@@ -48,7 +48,7 @@ namespace TrieStruct
             }
             currentNode.IsWord = false;
             currentNode.Data = default(T);
-            currentNode.Word = "";
+            currentNode.MainPrefix = "";
             return true;
         }
 
@@ -79,17 +79,17 @@ namespace TrieStruct
                 else
                     return wordsForPrefix;
             }
-            FindAllChildrenWords(currentNode, wordsForPrefix);
+            FindAllChildrenWords(prefix, currentNode, wordsForPrefix);
             return wordsForPrefix;
         }
 
         //Получение списка слов из ветвлений идущих после префикса
-        private void FindAllChildrenWords(Node<T> currentNode, List<string> wordsForPrefix)
+        private void FindAllChildrenWords(string prefix, Node<T> currentNode, List<string> wordsForPrefix)
         {
             if (currentNode.IsWord)
-                wordsForPrefix.Add(currentNode.Word);
+                wordsForPrefix.Add(currentNode.MainPrefix);
             foreach (var node in currentNode.Children.Values)
-                FindAllChildrenWords(node, wordsForPrefix);
+                FindAllChildrenWords(prefix, node, wordsForPrefix);
         }
     }
 }
