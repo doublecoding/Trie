@@ -3,3 +3,8 @@ C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\TrieStruct\bin
 C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\TrieStruct\obj\Debug\TrieStruct.csproj.CoreCompileInputs.cache
 C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\TrieStruct\obj\Debug\TrieStruct.dll
 C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\TrieStruct\obj\Debug\TrieStruct.pdb
+C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\Trie\TrieStruct\bin\Debug\TrieStruct.dll
+C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\Trie\TrieStruct\bin\Debug\TrieStruct.pdb
+C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\Trie\TrieStruct\obj\Debug\TrieStruct.csproj.CoreCompileInputs.cache
+C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\Trie\TrieStruct\obj\Debug\TrieStruct.dll
+C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\Trie\TrieStruct\obj\Debug\TrieStruct.pdb

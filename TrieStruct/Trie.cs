@@ -4,8 +4,10 @@ namespace TrieStruct
 {
     public class Trie<T>
     {
+        //корень дерева (основная вершина: в качестве Data не хранит ничего, концом слова не является)
         private Node<T> root = new Node<T>(default(T), false);
 
+        //Добавления нового слова в префиксное дерево
         public void AddWord(string word, T data)
         {
             var currentNode = root;
@@ -25,7 +27,7 @@ namespace TrieStruct
                 else if (i == word.Length - 1)
                 {
                     currentNode = currentNode.GetChild(word[i]);
-                    currentNode.Key = data;
+                    currentNode.Data = data;
                     currentNode.IsWord = true;
                     currentNode.Word = word;
                     break;
@@ -33,6 +35,8 @@ namespace TrieStruct
                 currentNode = currentNode.GetChild(word[i]);
             }
         }
+
+        //Удаление слова из префиксного дерева
         public bool DeleteWord(string word)
         {
             var currentNode = root;
@@ -43,11 +47,12 @@ namespace TrieStruct
                 currentNode = currentNode.GetChild(symbol);
             }
             currentNode.IsWord = false;
-            currentNode.Key = default(T);
+            currentNode.Data = default(T);
             currentNode.Word = "";
             return true;
         }
 
+        //Получение значения слова
         public T GetDataOfWord(string word)
         {
             var currentNode = root;
@@ -58,10 +63,11 @@ namespace TrieStruct
                 currentNode = currentNode.GetChild(symbol);
             }
             if (currentNode.IsWord == true)
-                return currentNode.Key;
+                return currentNode.Data;
             return default(T);
         }
 
+        //Получение списка всех слов, начинающихся с заданного префикса
         public List<string> GetWordsForPrefix(string prefix)
         {
             var wordsForPrefix = new List<string>();
@@ -77,6 +83,7 @@ namespace TrieStruct
             return wordsForPrefix;
         }
 
+        //Получение списка слов из ветвлений идущих после префикса
         private void FindAllChildrenWords(Node<T> currentNode, List<string> wordsForPrefix)
         {
             if (currentNode.IsWord)
