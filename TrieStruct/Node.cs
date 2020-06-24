@@ -6,7 +6,6 @@ namespace TrieStruct
     {
         public T Data { get; set; }
         public bool IsWord { get; set; }
-        public string MainPrefix { get; set; }
         public Dictionary<char, Node<T>> Children { get; set; }
 
         //конструктор Node (вершины)

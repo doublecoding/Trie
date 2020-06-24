@@ -22,7 +22,6 @@ namespace TrieStruct
                     {
                         currentNode.AddChild(word[i], true, data);
                         currentNode = currentNode.GetChild(word[i]);
-                        currentNode.MainPrefix = word;
                     }
                 }
                 else if (i == word.Length - 1)
@@ -30,7 +29,6 @@ namespace TrieStruct
                     currentNode = currentNode.GetChild(word[i]);
                     currentNode.Data = data;
                     currentNode.IsWord = true;
-                    currentNode.MainPrefix = word;
                     break;
                 }
                 currentNode = currentNode.GetChild(word[i]);
@@ -49,7 +47,6 @@ namespace TrieStruct
             }
             currentNode.IsWord = false;
             currentNode.Data = default(T);
-            currentNode.MainPrefix = "";
             return true;
         }
 
@@ -85,20 +82,20 @@ namespace TrieStruct
         }
 
         //Получение списка слов из ветвлений идущих после префикса
-        private void FindAllChildrenWords(string prefix, Node<T> currentNode, List<string> wordsForPrefix, StringBuilder currentWord)
+        private void FindAllChildrenWords(string prefix,
+                                          Node<T> currentNode,
+                                          List<string> wordsForPrefix,
+                                          StringBuilder currentWord)
         {
             foreach (var node in currentNode.Children)
             {
-                if (currentWord.Length == 0)
-                    currentWord.Append(prefix);
-                currentWord.Append(node.Key);
+                var currentPrefix = new StringBuilder(currentWord.ToString());
+                if (currentPrefix.Length == 0)
+                    currentPrefix.Append(prefix);
+                currentPrefix.Append(node.Key);
                 if (node.Value.IsWord)
-                {
-                    wordsForPrefix.Add(currentWord.ToString());
-                    if (node.Value.Children.Count == 0)
-                        currentWord.Clear();
-                }
-                FindAllChildrenWords(prefix, node.Value, wordsForPrefix, currentWord);
+                    wordsForPrefix.Add(currentPrefix.ToString());
+                FindAllChildrenWords(prefix, node.Value, wordsForPrefix, currentPrefix);
             }
         }
     }
