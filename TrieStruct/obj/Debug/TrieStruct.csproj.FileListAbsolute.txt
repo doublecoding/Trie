@@ -8,3 +8,4 @@ C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\Trie\TrieStruc
 C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\Trie\TrieStruct\obj\Debug\TrieStruct.csproj.CoreCompileInputs.cache
 C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\Trie\TrieStruct\obj\Debug\TrieStruct.dll
 C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\Trie\TrieStruct\obj\Debug\TrieStruct.pdb
+C:\Users\User\Projects\Code\Algorithm Final\TrieStruct\TrieStruct\Trie\TrieStruct\obj\Debug\TrieStruct.csprojAssemblyReference.cache

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace TrieStruct
 {
@@ -79,17 +80,26 @@ namespace TrieStruct
                 else
                     return wordsForPrefix;
             }
-            FindAllChildrenWords(prefix, currentNode, wordsForPrefix);
+            FindAllChildrenWords(prefix, currentNode, wordsForPrefix, new StringBuilder());
             return wordsForPrefix;
         }
 
         //Получение списка слов из ветвлений идущих после префикса
-        private void FindAllChildrenWords(string prefix, Node<T> currentNode, List<string> wordsForPrefix)
+        private void FindAllChildrenWords(string prefix, Node<T> currentNode, List<string> wordsForPrefix, StringBuilder currentWord)
         {
-            if (currentNode.IsWord)
-                wordsForPrefix.Add(currentNode.MainPrefix);
-            foreach (var node in currentNode.Children.Values)
-                FindAllChildrenWords(prefix, node, wordsForPrefix);
+            foreach (var node in currentNode.Children)
+            {
+                if (currentWord.Length == 0)
+                    currentWord.Append(prefix);
+                currentWord.Append(node.Key);
+                if (node.Value.IsWord)
+                {
+                    wordsForPrefix.Add(currentWord.ToString());
+                    if (node.Value.Children.Count == 0)
+                        currentWord.Clear();
+                }
+                FindAllChildrenWords(prefix, node.Value, wordsForPrefix, currentWord);
+            }
         }
     }
 }
